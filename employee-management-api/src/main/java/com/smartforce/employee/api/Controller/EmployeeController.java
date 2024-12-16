@@ -18,6 +18,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @GetMapping
+    public List<Employee> getAllEmployees(){
+        return employeeService.getAllEmployees();
+    }
+
     @GetMapping("/userType/{userType}")
     public List<Employee> findByUserType(@PathVariable("userType") String userType){
         return employeeService.findByUserType(userType);

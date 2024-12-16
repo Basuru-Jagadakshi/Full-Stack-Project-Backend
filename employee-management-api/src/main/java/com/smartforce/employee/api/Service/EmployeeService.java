@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface EmployeeService {
 
+    List<Employee> getAllEmployees();
+
     List<Employee> findByUserType(String userType);
 
     Employee addEmployee(Employee employee);

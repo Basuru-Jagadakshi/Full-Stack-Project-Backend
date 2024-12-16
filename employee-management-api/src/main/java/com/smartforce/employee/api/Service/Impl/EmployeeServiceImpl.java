@@ -21,6 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
     @Autowired
     private EmployeeDisciplinaryRepository employeeDisciplinaryRepository;
 
+    public List<Employee> getAllEmployees(){
+        return employeeRepository.findAll();
+    }
+
     public List<Employee> findByUserType(String userType){
         List<Employee> employees = employeeRepository.findByUserType(userType);
         if(!employees.isEmpty()){
