@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
 
     List<Employee> findByUserType(String userType);
+
+    List<Employee> findByDepartment(String department);
 }

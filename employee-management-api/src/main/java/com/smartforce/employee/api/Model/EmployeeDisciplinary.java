@@ -13,17 +13,22 @@ public class EmployeeDisciplinary {
     private String employeeId;
 
     private String name;
-    private int pin;
+    private String pin;
+
+    private String department;
+    private String designation;
 
     private String title;
     private String description;
     private String status;
 
-    public EmployeeDisciplinary(String id, String employeeId, String name, int pin, String title, String description, String status) {
+    public EmployeeDisciplinary(String id, String employeeId, String name, String pin, String department, String designation, String title, String description, String status) {
         this.id = id;
         this.employeeId = employeeId;
         this.name = name;
         this.pin = pin;
+        this.department = department;
+        this.designation = designation;
         this.title = title;
         this.description = description;
         this.status = status;
@@ -53,11 +58,11 @@ public class EmployeeDisciplinary {
         this.name = name;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
@@ -83,5 +88,21 @@ public class EmployeeDisciplinary {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 }

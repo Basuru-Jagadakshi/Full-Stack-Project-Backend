@@ -33,4 +33,9 @@ public class AttendanceController {
         LocalDateTime end = LocalDateTime.parse(endDate);
         return attendanceService.getAttendanceByEmployeeAndDate(employeeId, start, end);
     }
+
+    @GetMapping(value = "employee-pin/{pin}/month/{monthString}/year/{yearString}")
+    public List<Attendance> getAttendanceByEmployeeAndMonthAndYear(@PathVariable String pin, @PathVariable String monthString, @PathVariable String yearString){
+        return attendanceService.getAttendanceByEmployeeAndMonthAndYear(pin, monthString, yearString);
+    }
 }

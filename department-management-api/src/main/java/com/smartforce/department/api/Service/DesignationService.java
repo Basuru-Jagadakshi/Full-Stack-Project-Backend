@@ -13,4 +13,6 @@ public interface DesignationService {
     Designation updateDesignation(Designation designation, String id);
 
     void deleteDesignation(String id);
+
+    Designation findByDesignationName(String name);
 }

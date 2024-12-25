@@ -1,5 +1,6 @@
 package com.smartforce.attendance.api.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -16,21 +17,22 @@ public class Attendance {
 
     @Id
     private String id;
-    private String employeeId;
+
+    private String pin;
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
 
-    public Attendance(String employeeId, LocalDateTime checkInTime){
-        this.employeeId = employeeId;
+    public Attendance(String pin, LocalDateTime checkInTime){
+        this.pin = pin;
         this.checkInTime = checkInTime;
     }
 
     public String getEmployeeId() {
-        return employeeId;
+        return pin;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeId(String pin) {
+        this.pin = pin;
     }
 
     public LocalDateTime getCheckInTime() {

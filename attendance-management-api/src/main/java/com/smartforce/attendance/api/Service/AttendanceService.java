@@ -9,5 +9,7 @@ public interface AttendanceService {
 
     public Attendance saveCheckInTime(String employeeId);
     public Attendance saveCheckOutTime(String attendanceId);
-    public List<Attendance> getAttendanceByEmployeeAndDate(String employeeId, LocalDateTime startDate, LocalDateTime endDate);
+    public List<Attendance> getAttendanceByEmployeeAndDate(String pin, LocalDateTime startDate, LocalDateTime endDate);
+
+    List<Attendance> getAttendanceByEmployeeAndMonthAndYear(String pin, String monthString, String yearString);
 }

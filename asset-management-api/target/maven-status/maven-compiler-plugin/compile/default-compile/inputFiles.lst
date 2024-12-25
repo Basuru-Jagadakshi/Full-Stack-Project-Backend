@@ -1,0 +1,6 @@
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/AssetManagementApiApplication.java
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/Controller/AssetController.java
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/Model/Asset.java
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/Repository/AssetRepository.java
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/Service/AssetService.java
+/Users/basurujagadakshi/Desktop/My_Projects/HR_APPLICATION/Full-Stack-Project-Backend/asset-management-api/src/main/java/com/smartforce/asset/api/Service/Impl/AssetServiceImpl.java

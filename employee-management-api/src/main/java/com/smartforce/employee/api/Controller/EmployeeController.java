@@ -49,4 +49,9 @@ public class EmployeeController {
         employeeService.updateEmployeeType(id, userType);
         return new ResponseEntity<String>("Changed type!!!", HttpStatus.OK);
     }
+
+    @GetMapping(value = "/department/{department}/employee")
+    public List<Employee> findByDepartment(@PathVariable String department){
+        return employeeService.findByDepartment(department);
+    }
 }

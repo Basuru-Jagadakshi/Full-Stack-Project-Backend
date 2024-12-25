@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface AttendanceRepository extends MongoRepository<Attendance, String> {
 
-    List<Attendance> findByEmployeeIdAndCheckInTimeBetween(String employeeId, LocalDateTime startDate, LocalDateTime endDate);
+    List<Attendance> findByPinAndCheckInTimeBetween(String employeeId, LocalDateTime startDate, LocalDateTime endDate);
 }

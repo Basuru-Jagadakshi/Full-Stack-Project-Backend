@@ -11,11 +11,13 @@ public class Employee {
     @Id
     private String id;
     private String name;
-    private short pin;
+    private String pin;
     private String email;
+    private String department;
+    private String designation;
     private String userType;
 
-    public Employee(String id, String name, short pin, String email, String userType) {
+    public Employee(String id, String name, String pin, String email, String userType) {
         this.id = id;
         this.name = name;
         this.pin = pin;
@@ -39,11 +41,11 @@ public class Employee {
         this.name = name;
     }
 
-    public short getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(short pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
@@ -61,5 +63,21 @@ public class Employee {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 }

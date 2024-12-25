@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.YearMonth;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -27,7 +30,19 @@ public class AttendanceServiceImpl implements AttendanceService {
         return attendanceRepository.save(attendance);
     }
 
-    public List<Attendance> getAttendanceByEmployeeAndDate(String employeeId, LocalDateTime startDate, LocalDateTime endDate){
-        return attendanceRepository.findByEmployeeIdAndCheckInTimeBetween(employeeId, startDate, endDate);
+    public List<Attendance> getAttendanceByEmployeeAndDate(String pin, LocalDateTime startDate, LocalDateTime endDate){
+        return attendanceRepository.findByPinAndCheckInTimeBetween(pin, startDate, endDate);
+    }
+
+    @Override
+    public List<Attendance> getAttendanceByEmployeeAndMonthAndYear(String pin, String monthString, String yearString) {
+        int year = Integer.parseInt(yearString);
+
+        Month month = Month.valueOf(monthString.toUpperCase(Locale.ENGLISH));
+
+        LocalDateTime startOfMonth = YearMonth.of(year, month.getValue()).atDay(1).atStartOfDay();
+        LocalDateTime endOfMonth = YearMonth.of(year, month.getValue()).atEndOfMonth().atTime(23, 59, 59);
+
+        return attendanceRepository.findByPinAndCheckInTimeBetween(pin, startOfMonth, endOfMonth);
     }
 }

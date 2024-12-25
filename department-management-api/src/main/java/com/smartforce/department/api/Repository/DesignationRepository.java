@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DesignationRepository extends MongoRepository<Designation, String> {
+
+    Designation findByDesignationName(String name);
 }

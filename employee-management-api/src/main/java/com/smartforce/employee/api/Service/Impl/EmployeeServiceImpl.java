@@ -54,6 +54,8 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
         existingEmployee.setName(employee.getName());
         existingEmployee.setPin(employee.getPin());
         existingEmployee.setEmail(employee.getEmail());
+        existingEmployee.setDepartment(employee.getDepartment());
+        existingEmployee.setDesignation(employee.getDesignation());
         employeeRepository.save(existingEmployee);
         return existingEmployee;
     }
@@ -93,6 +95,8 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
         existingEmployeeDisciplinary.setTitle(employeeDisciplinary.getTitle());
         existingEmployeeDisciplinary.setDescription(employeeDisciplinary.getDescription());
         existingEmployeeDisciplinary.setStatus(employeeDisciplinary.getStatus());
+        existingEmployeeDisciplinary.setDepartment(employeeDisciplinary.getDepartment());
+        existingEmployeeDisciplinary.setDesignation(employeeDisciplinary.getDesignation());
         employeeDisciplinaryRepository.save(existingEmployeeDisciplinary);
         return existingEmployeeDisciplinary;
     }
@@ -100,5 +104,9 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
     public void deleteEmployeeDisciplinary(String id){
         employeeDisciplinaryRepository.findById(id).orElseThrow(() -> new RuntimeException());
         employeeDisciplinaryRepository.deleteById(id);
+    }
+
+    public List<Employee> findByDepartment(String department){
+        return employeeRepository.findByDepartment(department);
     }
 }

@@ -24,7 +24,7 @@ public class DesignationServiceImpl implements DesignationService {
 
     public Designation updateDesignation(Designation designation, String id){
         Designation existingDesignation = designationRepository.findById(id).orElseThrow(() -> new RuntimeException());
-        existingDesignation.setName(designation.getName());
+        existingDesignation.setDesignationName(designation.getDesignationName());
         designationRepository.save(existingDesignation);
         return existingDesignation;
     }
@@ -32,5 +32,10 @@ public class DesignationServiceImpl implements DesignationService {
     public void deleteDesignation(String id){
         designationRepository.findById(id).orElseThrow(() -> new RuntimeException());
         designationRepository.deleteById(id);
+    }
+
+    @Override
+    public Designation findByDesignationName(String name) {
+        return designationRepository.findByDesignationName(name);
     }
 }

@@ -19,4 +19,6 @@ public interface EmployeeService {
     void deleteEmployee(String id);
 
     Employee updateEmployeeType(String id, String userType);
+
+    List<Employee> findByDepartment(String department);
 }

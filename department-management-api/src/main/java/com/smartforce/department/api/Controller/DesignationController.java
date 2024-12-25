@@ -37,4 +37,9 @@ public class DesignationController {
         designationService.deleteDesignation(id);
         return new ResponseEntity<String>("Designation is deleted successfully", HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{name}/basic-salary")
+    public Designation findByDesignationName(@PathVariable String name){
+        return designationService.findByDesignationName(name);
+    }
 }
