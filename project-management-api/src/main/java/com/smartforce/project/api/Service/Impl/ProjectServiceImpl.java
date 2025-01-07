@@ -6,6 +6,7 @@ import com.smartforce.project.api.Service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +21,17 @@ public class ProjectServiceImpl implements ProjectService {
 
     public List<Project> getAllProject(){
         return projectRepository.findAll();
+    }
+
+    public List<String> getAllProjectNames(){
+        ArrayList<String> projectNames = new ArrayList<String>();
+        List<Project> projects = projectRepository.findAll();
+
+        for (Project project : projects){
+            projectNames.add(project.getProjectTitle());
+        }
+
+        return projectNames;
     }
 
     public Project updateProject(String id, Project project){

@@ -27,6 +27,11 @@ public class ProjectController {
         return projectService.getAllProject();
     }
 
+    @GetMapping(value = "/project-names")
+    public List<String> getAllProjectNames(){
+        return projectService.getAllProjectNames();
+    }
+
     @PutMapping(value = "/update-project/{id}")
     public ResponseEntity<Project> updateProject(@PathVariable String id, @RequestBody Project project){
         return new ResponseEntity<Project>(projectService.updateProject(id, project), HttpStatus.OK);
