@@ -49,4 +49,9 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(existingTask);
         return existingTask;
     }
+
+    @Override
+    public List<Task> findByProjectTitle(String projectTitle) {
+        return taskRepository.findByProjectTitle(projectTitle);
+    }
 }

@@ -15,4 +15,6 @@ public interface TaskService {
     void deleteTask(String id);
 
     Task changeStatus(String id, String status);
+
+    List<Task> findByProjectTitle(String projectTitle);
 }

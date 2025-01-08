@@ -42,4 +42,9 @@ public class TaskController {
     public ResponseEntity<Task> changeStatus(@PathVariable String id, @RequestParam String status){
         return new ResponseEntity<Task>(taskService.changeStatus(id, status), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/project/{projectTitle}/tasks")
+    public List<Task> findByProjectTitle(@PathVariable String projectTitle){
+        return taskService.findByProjectTitle(projectTitle);
+    }
 }
