@@ -25,6 +25,7 @@ public class DesignationServiceImpl implements DesignationService {
     public Designation updateDesignation(Designation designation, String id){
         Designation existingDesignation = designationRepository.findById(id).orElseThrow(() -> new RuntimeException());
         existingDesignation.setDesignationName(designation.getDesignationName());
+        existingDesignation.setBasicSalary(designation.getBasicSalary());
         designationRepository.save(existingDesignation);
         return existingDesignation;
     }
