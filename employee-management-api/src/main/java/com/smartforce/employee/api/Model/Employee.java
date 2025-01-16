@@ -17,11 +17,13 @@ public class Employee {
     private String designation;
     private String userType;
 
-    public Employee(String id, String name, String pin, String email, String userType) {
+    public Employee(String id, String name, String pin, String email, String department, String designation, String userType) {
         this.id = id;
         this.name = name;
         this.pin = pin;
         this.email = email;
+        this.department = department;
+        this.designation = designation;
         this.userType = userType;
     }
 
