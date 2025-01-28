@@ -56,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
         existingEmployee.setEmail(employee.getEmail());
         existingEmployee.setDepartment(employee.getDepartment());
         existingEmployee.setDesignation(employee.getDesignation());
+        existingEmployee.setUserType(employee.getUserType());
         employeeRepository.save(existingEmployee);
         return existingEmployee;
     }
