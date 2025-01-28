@@ -24,7 +24,7 @@ public class Employee {
         this.email = email;
         this.department = department;
         this.designation = designation;
-        this.userType = userType;
+        this.userType = "active";
     }
 
     public String getId() {
