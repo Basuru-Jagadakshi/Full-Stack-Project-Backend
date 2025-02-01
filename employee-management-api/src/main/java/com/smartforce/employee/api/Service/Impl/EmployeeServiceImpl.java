@@ -4,6 +4,7 @@ import com.smartforce.employee.api.Model.Employee;
 import com.smartforce.employee.api.Model.EmployeeDisciplinary;
 import com.smartforce.employee.api.Repository.EmployeeDisciplinaryRepository;
 import com.smartforce.employee.api.Repository.EmployeeRepository;
+import com.smartforce.employee.api.ResponseDTO.EmployeeResponse;
 import com.smartforce.employee.api.Service.EmployeeDisciplinaryService;
 import com.smartforce.employee.api.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,5 +110,20 @@ public class EmployeeServiceImpl implements EmployeeService, EmployeeDisciplinar
 
     public List<Employee> findByDepartment(String department){
         return employeeRepository.findByDepartment(department);
+    }
+
+    @Override
+    public EmployeeResponse findByPin(String pin) {
+        Optional<Employee> employee = employeeRepository.findByPin(pin);
+
+        EmployeeResponse employeeResponse = new EmployeeResponse();
+
+        employeeResponse.setPin(employee.get().getPin());
+        employeeResponse.setName(employee.get().getName());
+        employeeResponse.setEmail(employee.get().getEmail());
+        employeeResponse.setDesignation(employee.get().getDesignation());
+        employeeResponse.setDepartment(employee.get().getDepartment());
+
+        return employeeResponse;
     }
 }

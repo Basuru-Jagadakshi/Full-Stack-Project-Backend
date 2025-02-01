@@ -1,6 +1,7 @@
 package com.smartforce.employee.api.Controller;
 
 import com.smartforce.employee.api.Model.Employee;
+import com.smartforce.employee.api.ResponseDTO.EmployeeResponse;
 import com.smartforce.employee.api.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/employee")
@@ -53,5 +55,10 @@ public class EmployeeController {
     @GetMapping(value = "/department/{department}/employee")
     public List<Employee> findByDepartment(@PathVariable String department){
         return employeeService.findByDepartment(department);
+    }
+
+    @GetMapping(value = "/pin/{pin}")
+    public EmployeeResponse getEmployeeByPin(@PathVariable String pin){
+        return employeeService.findByPin(pin);
     }
 }
