@@ -36,6 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     public Project updateProject(String id, Project project){
         Project existingProject = projectRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        existingProject.setProjectId(project.getProjectId());
         existingProject.setProjectTitle(project.getProjectTitle());
         existingProject.setStartDate(project.getStartDate());
         existingProject.setEndDate(project.getEndDate());

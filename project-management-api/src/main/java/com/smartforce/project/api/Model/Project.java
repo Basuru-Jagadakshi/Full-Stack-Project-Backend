@@ -10,14 +10,16 @@ public class Project {
 
     @Id
     private String id;
+    private String projectId;
     private String projectTitle;
     private String status;
     private String startDate;
     private String endDate;
     private String details;
 
-    public Project(String id, String projectTitle, String status, String startDate, String endDate, String details) {
+    public Project(String id, String projectId, String projectTitle, String status, String startDate, String endDate, String details) {
         this.id = id;
+        this.projectId = projectId;
         this.projectTitle = projectTitle;
         this.status = status;
         this.startDate = startDate;
@@ -31,6 +33,14 @@ public class Project {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getProjectTitle() {
