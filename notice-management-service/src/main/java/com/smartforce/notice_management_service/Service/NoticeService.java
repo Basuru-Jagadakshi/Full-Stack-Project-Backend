@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public interface NoticeService {
 
-    Notice createNotice(String title, MultipartFile file) throws IOException;
+    Notice createNotice(String noticeId, String title, String fileName);
 
     List<Notice> getAllNotices();
 
     Optional<Notice> getNoticeById(String id);
 
-    Notice updateNotice(String id, String title, MultipartFile file) throws IOException;
+    Notice updateNotice(String id, String noticeId, String title, String fileName);
 
     void deleteNotice(String id);
 }

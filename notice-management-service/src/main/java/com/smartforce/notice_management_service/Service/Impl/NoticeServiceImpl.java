@@ -19,13 +19,12 @@ public class NoticeServiceImpl implements NoticeService {
     private NoticeRepository noticeRepository;
 
     @Override
-    public Notice createNotice(String title, MultipartFile file) throws IOException {
+    public Notice createNotice(String noticeId, String title, String fileName){
         Notice notice = new Notice();
 
+        notice.setNoticeId(noticeId);
         notice.setTitle(title);
-        notice.setFileName(file.getOriginalFilename());
-        notice.setContentType(file.getContentType());
-        notice.setFileData(file.getBytes());
+        notice.setFileName(fileName);
         notice.setPublishedDate(LocalDate.now());
 
         return noticeRepository.save(notice);
@@ -42,18 +41,13 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public Notice updateNotice(String id, String title, MultipartFile file) throws IOException {
+    public Notice updateNotice(String id, String noticeId, String title, String fileName){
         Notice existingNotice = noticeRepository.findById(id).orElseThrow(() -> new RuntimeException("Notice not found with id: " + id));
 
-        if (title != null && !title.isEmpty()) {
-            existingNotice.setTitle(title);
-        }
-
-        if (file != null) {
-            existingNotice.setFileName(file.getOriginalFilename());
-            existingNotice.setContentType(file.getContentType());
-            existingNotice.setFileData(file.getBytes());
-        }
+        existingNotice.setNoticeId(noticeId);
+        existingNotice.setTitle(title);
+        existingNotice.setFileName(fileName);
+        existingNotice.setPublishedDate(LocalDate.now());
 
         return noticeRepository.save(existingNotice);
     }

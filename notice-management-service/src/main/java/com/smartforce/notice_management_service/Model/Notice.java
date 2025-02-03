@@ -10,11 +10,21 @@ public class Notice {
 
     @Id
     private String id;
+    private String noticeId;
     private String title;
     private String fileName;
-    private String contentType;
-    private byte[] fileData;
     private LocalDate publishedDate;
+
+    public Notice() {
+    }
+
+    public Notice(String id, String noticeId, String title, String fileName, LocalDate publishedDate) {
+        this.id = id;
+        this.noticeId = noticeId;
+        this.title = title;
+        this.fileName = fileName;
+        this.publishedDate = publishedDate;
+    }
 
     public String getId() {
         return id;
@@ -22,6 +32,14 @@ public class Notice {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNoticeId() {
+        return noticeId;
+    }
+
+    public void setNoticeId(String noticeId) {
+        this.noticeId = noticeId;
     }
 
     public String getTitle() {
@@ -38,22 +56,6 @@ public class Notice {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public byte[] getFileData() {
-        return fileData;
-    }
-
-    public void setFileData(byte[] fileData) {
-        this.fileData = fileData;
     }
 
     public LocalDate getPublishedDate() {

@@ -22,14 +22,8 @@ public class NoticeController {
     private NoticeService noticeService;
 
     @PostMapping
-    public ResponseEntity<String> createNotice(@RequestParam("title") String title, @RequestParam("file") MultipartFile file) throws IOException{
-        try {
-            Notice notice = noticeService.createNotice(title, file);
-            return ResponseEntity.ok("Notice created successfully");
-        }
-        catch (Exception e){
-            return ResponseEntity.status(500).body("Error uploading notice");
-        }
+    public ResponseEntity<Notice> createNotice(@RequestParam String noticeId, @RequestParam String title, @RequestParam String fileName){
+        return new ResponseEntity<>(noticeService.createNotice(noticeId,title,fileName), HttpStatus.OK);
     }
 
     @GetMapping
@@ -37,25 +31,14 @@ public class NoticeController {
         return noticeService.getAllNotices();
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<byte[]> downloadFile(@PathVariable String id) {
-        Optional<Notice> notice = noticeService.getNoticeById(id);
-        if (notice.isPresent()) {
-            Notice foundNotice = notice.get();
-            return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(foundNotice.getContentType()))
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + foundNotice.getFileName() + "\"")
-                    .body(foundNotice.getFileData());
-        }
-        return ResponseEntity.status(404).body(null);
-    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Notice> updateNotice(
             @PathVariable("id") String id,
-            @RequestParam(value = "title", required = false) String title,
-            @RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
-        return new ResponseEntity<>(noticeService.updateNotice(id, title, file), HttpStatus.OK);
+            @RequestParam String noticeId,
+            @RequestParam String title,
+            @RequestParam String fileName){
+        return new ResponseEntity<>(noticeService.updateNotice(id, noticeId, title, fileName), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
