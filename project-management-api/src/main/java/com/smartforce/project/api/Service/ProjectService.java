@@ -15,4 +15,6 @@ public interface ProjectService {
     Project updateProject(String id, Project project);
 
     void deleteProject(String id);
+
+    List<Project> getProjectsByStatus(String status);
 }

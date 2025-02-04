@@ -42,4 +42,9 @@ public class ProjectController {
         projectService.deleteProject(id);
         return new ResponseEntity<String>("Project record is successfully deleted!", HttpStatus.OK);
     }
+
+    @GetMapping(value = "/project-status/{status}")
+    public List<Project> getProjectsById(@PathVariable String status){
+        return projectService.getProjectsByStatus(status);
+    }
 }

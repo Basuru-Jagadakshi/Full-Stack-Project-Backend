@@ -50,4 +50,9 @@ public class ProjectServiceImpl implements ProjectService {
         projectRepository.findById(id).orElseThrow(() -> new RuntimeException());
         projectRepository.deleteById(id);
     }
+
+    @Override
+    public List<Project> getProjectsByStatus(String status) {
+        return projectRepository.getProjectsByStatus(status);
+    }
 }
