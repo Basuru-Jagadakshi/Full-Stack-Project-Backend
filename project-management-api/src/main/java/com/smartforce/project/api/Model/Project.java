@@ -17,11 +17,11 @@ public class Project {
     private String endDate;
     private String details;
 
-    public Project(String id, String projectId, String projectTitle, String status, String startDate, String endDate, String details) {
+    public Project(String id, String projectId, String projectTitle, String startDate, String endDate, String details) {
         this.id = id;
         this.projectId = projectId;
         this.projectTitle = projectTitle;
-        this.status = status;
+        this.status = "Upcoming";
         this.startDate = startDate;
         this.endDate = endDate;
         this.details = details;
