@@ -1,53 +1,42 @@
-package com.smartforce.asset.api.Model;
+package com.smartforce.asset.api.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Assets")
+@Document(collection = "assets")
 public class Asset {
 
     @Id
     private String id;
     private String assetName;
-    private Integer quantity;
+    private int quantity;
     private String type;
+    private String departmentName; // New field
+    private String categoryName; // New field
 
-    public Asset(String id, String assetName, Integer quantity, String type) {
-        this.id = id;
+    // Constructors
+    public Asset() {}
+
+    public Asset(String assetName, int quantity, String type, String departmentName, String categoryName) {
         this.assetName = assetName;
         this.quantity = quantity;
         this.type = type;
+        this.departmentName = departmentName;
+        this.categoryName = categoryName;
     }
 
-    public String getId() {
-        return id;
-    }
+    // Getters and Setters
+    public String getId() { return id; }
+    public String getAssetName() { return assetName; }
+    public int getQuantity() { return quantity; }
+    public String getType() { return type; }
+    public String getDepartmentName() { return departmentName; }
+    public String getCategoryName() { return categoryName; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAssetName() {
-        return assetName;
-    }
-
-    public void setAssetName(String assetName) {
-        this.assetName = assetName;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+    public void setId(String id) { this.id = id; }
+    public void setAssetName(String assetName) { this.assetName = assetName; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setType(String type) { this.type = type; }
+    public void setDepartmentName(String departmentName) { this.departmentName = departmentName; }
+    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
 }
