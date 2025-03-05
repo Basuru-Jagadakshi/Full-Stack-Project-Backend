@@ -31,7 +31,7 @@ public class EmployeeDisciplinary {
         this.designation = designation;
         this.title = title;
         this.description = description;
-        this.status = status;
+        this.status = "Active";
     }
 
     public String getId() {
