@@ -1,4 +1,6 @@
+com/smartforce/asset/api/Model/AssetCategory.class
 com/smartforce/asset/api/Service/Impl/AssetServiceImpl.class
+com/smartforce/asset/api/Repository/AssetCategoryRepository.class
 com/smartforce/asset/api/AssetManagementApiApplication.class
 com/smartforce/asset/api/Model/Asset.class
 com/smartforce/asset/api/Service/AssetService.class

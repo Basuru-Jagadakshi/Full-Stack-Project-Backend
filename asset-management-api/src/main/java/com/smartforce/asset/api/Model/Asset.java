@@ -1,4 +1,4 @@
-package com.smartforce.asset.api.model;
+package com.smartforce.asset.api.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

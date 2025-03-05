@@ -8,9 +8,10 @@ public interface AssetService {
 
     List<Asset> getAllAssets();
 
-    Asset addAsset(Asset asset);
+    Asset saveAsset(Asset asset);
+
+    void deleteAsset(String id);
 
     Asset updateAsset(String id, Asset asset);
 
-    void deleteAsset(String id);
 }
