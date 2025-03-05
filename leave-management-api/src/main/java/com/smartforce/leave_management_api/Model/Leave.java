@@ -1,11 +1,13 @@
 package com.smartforce.leave_management_api.Model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 @Document(collection = "leavings")
 public class Leave {
@@ -13,31 +15,39 @@ public class Leave {
     @Id
     private String id;
     private String employeeName;
-    private int pin;
+    private String pin;
     private String leaveType;
-    private LocalDateTime applyDate;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate applyDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int duration;
     private String status;
 
+    private String year;
 
-    public Leave(String id, String employeeName, int pin, String leaveType, LocalDateTime applyDate, LocalDateTime startDate, LocalDateTime endDate, int duration, String status) {
+
+    public Leave(String id, String employeeName, String pin, String leaveType, LocalDate applyDate, LocalDate startDate, LocalDate endDate, String status, int duration, String year) {
         this.id = id;
         this.employeeName = employeeName;
         this.pin = pin;
         this.leaveType = leaveType;
-        this.applyDate = applyDate;
+        this.applyDate = LocalDate.now();
         this.startDate = startDate;
         this.endDate = endDate;
         this.duration = calculateDuration(startDate, endDate);
-        this.status = status;
+        this.status = "Pending";
+        this.year=findYear(startDate);
     }
 
 
-    private int calculateDuration(LocalDateTime startDate, LocalDateTime endDate){
-        Duration duration = Duration.between(startDate, endDate);
-        return (int) duration.toDays() + 1;
+    private int calculateDuration(LocalDate startDate, LocalDate endDate){
+        Period period = Period.between(startDate, endDate);
+        return period.getDays() + 1;
+    }
+
+    private String findYear(LocalDate startDate){
+        int year = startDate.getYear();
+        return String.valueOf(year);
     }
 
     public String getId() {
@@ -56,11 +66,11 @@ public class Leave {
         this.employeeName = employeeName;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
@@ -72,27 +82,27 @@ public class Leave {
         this.leaveType = leaveType;
     }
 
-    public LocalDateTime getApplyDate() {
+    public LocalDate getApplyDate() {
         return this.applyDate;
     }
 
-    public void setApplyDate(LocalDateTime applyDate) {
+    public void setApplyDate(LocalDate applyDate) {
         this.applyDate = applyDate;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

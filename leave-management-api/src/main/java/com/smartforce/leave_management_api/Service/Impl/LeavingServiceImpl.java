@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import javax.management.Query;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,6 +20,9 @@ public class LeavingServiceImpl implements LeavingService {
 
     @Autowired
     private LeaveRepository leaveRepository;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     public List<Leave> getAllLeaves(){
         return leaveRepository.findAll();
@@ -54,4 +60,13 @@ public class LeavingServiceImpl implements LeavingService {
         return leaveRepository.save(leave);
     }
 
+    @Override
+    public List<Leave> findByStatus(String status) {
+        return leaveRepository.findByStatus(status);
+    }
+
+    @Override
+    public List<Leave> findByPinAndYear(String pin, String year) {
+        return leaveRepository.findByPinAndYear(pin, year);
+    }
 }

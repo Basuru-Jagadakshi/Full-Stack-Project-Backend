@@ -19,4 +19,8 @@ public interface LeavingService {
     List<Leave> getLeavesByEmployeeNameAndStatus(String employeeName, LocalDateTime startDate, LocalDateTime endDate, String status);
 
     Leave approveLeaveRequest(String id);
+
+    List<Leave> findByStatus(String status);
+
+    List<Leave> findByPinAndYear(String pin, String year);
 }

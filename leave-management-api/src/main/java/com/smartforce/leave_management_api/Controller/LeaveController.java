@@ -1,5 +1,6 @@
 package com.smartforce.leave_management_api.Controller;
 
+import com.smartforce.leave_management_api.DTO.Request.GetLeavesByPinAndYear;
 import com.smartforce.leave_management_api.Model.Leave;
 import com.smartforce.leave_management_api.Service.LeavingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -50,5 +52,15 @@ public class LeaveController {
     @PutMapping(value = "/update-status/{id}")
     public Leave approveLeaveRequest(@PathVariable String id){
         return leavingService.approveLeaveRequest(id);
+    }
+
+    @GetMapping(value = "/get-leaves/{status}")
+    public List<Leave> getProjectsByStatus(@PathVariable String status){
+        return leavingService.findByStatus(status);
+    }
+
+    @GetMapping(value = "/get-leaves")
+    public List<Leave> findByPinAndYear(@RequestBody GetLeavesByPinAndYear getLeavesByPinAndYear){
+        return leavingService.findByPinAndYear(getLeavesByPinAndYear.getPin(), getLeavesByPinAndYear.getYear());
     }
 }

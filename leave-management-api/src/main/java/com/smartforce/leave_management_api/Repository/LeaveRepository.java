@@ -18,5 +18,7 @@ public interface LeaveRepository extends MongoRepository<Leave, String> {
             String employeeName, LocalDateTime startDate, LocalDateTime endDate, String status
     );
 
+    List<Leave> findByStatus(String status);
 
+    List<Leave> findByPinAndYear(String pin, String year);
 }
